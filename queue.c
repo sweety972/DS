@@ -1,52 +1,29 @@
 #include<stdio.h>
-
-int queue[5];
-int front = 0;
-int rear = -1;
-int max = 5;
-
-void enqueue(int value)
-{
-    if(rear == max -1)
-    {
-        printf("Queue full\n");
+#define MAX 10
+int rear=-1;
+int front=0;
+int queue[MAX];
+int enqueue(int value){
+    if(rear==MAX-1){
+        printf("overflow");
     }
-    else
-    {
-        rear++;
-        queue[rear] = value;
-    }
+    rear++;
+    queue[rear]=value;
 }
-void dequeue()
-{
-    if(rear==front)
-    {
+void dequeue(){
+    if(front==-1){
         printf("underflow");
     }
-    else
-    {
-        printf("dequeued value = %d\n",queue[front]);
-        queue[front] = 0;
-        front++;
-    }
+    printf("popped %d\n",queue[front]);
+    front++;
 }
-
-int main()
-{
-    int i;
-    enqueue(5);
-    enqueue(6);
-    enqueue(7);
-    enqueue(8);
-    enqueue(9);
-    enqueue(10);
-    dequeue();
-    dequeue();
-    dequeue();
-    enqueue(23);
-
-    for(i = 0; i < max; i++)
-    {
-        printf("%d\n", queue[i]);
-    }
+int main(){
+    enqueue(20);
+     enqueue(80);
+      enqueue(90);
+      dequeue();
+      for(int i=front;i<=rear;i++){
+        printf("%d",queue[i]);
+      }
+      
 }
